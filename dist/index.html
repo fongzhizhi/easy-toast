@@ -3,20 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title><%= page_title %></title>
+    <title>Toast Message</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <link rel="icon" href="favicon.ico" />
     <link
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="<%= css_path %>"
+      href="index.min.css"
     />
   </head>
   <body>
     <div id="app">
-      <h2><%= page_title %></h2>
-      <img id="logo" src="<%= assets_path %>logo.png" alt="logo" />
+      <h2>Toast Message</h2>
+      <img id="logo" src="assets/logo.png" alt="logo" />
       <div class="toast-message">
         <div class="line">
           <label>Message: </label>
@@ -52,6 +52,6 @@
         </div>
       </div>
     </div>
-    <script src="<%= js_path %>"></script>
+    <script src="app.min.js"></script>
   </body>
 </html>

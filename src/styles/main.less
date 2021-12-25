@@ -4,8 +4,16 @@
   text-align: center;
 
   .toast-message {
+    display: flex;
+    flex-direction: column;
     .line {
-      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      margin: 15px auto;
+      width: 450px;
+      label {
+        width: 130px;
+      }
     }
     input {
       background-color: #fff;
@@ -33,11 +41,9 @@
     line-height: 1;
     white-space: nowrap;
     cursor: pointer;
-    background: #fff;
+    color: #fff;
     border: 1px solid #dcdfe6;
     border-color: #dcdfe6;
-    color: #606266;
-    -webkit-appearance: none;
     text-align: center;
     box-sizing: border-box;
     outline: none;
@@ -47,23 +53,28 @@
     padding: 12px 20px;
     font-size: 14px;
     border-radius: 4px;
+    margin-right: 40px;
     &:hover,
     &:focus {
       background: #fff;
       border-color: #409eff;
-      color: #409eff;
+      color: #1060b3;
     }
     &.success {
-      background: #f0f9eb;
+      background: #5aa37c;
     }
     &.error {
-      background: #ffebea;
+      background: #ec5f56;
     }
     &.warn {
-      background: #fff1e3;
+      background: #ffaa5f;
     }
     &.info {
-      background: #eef3f8;
+      background: #1790ff;
+    }
+    &.cycle {
+      background: #47a7a4;
+      margin-left: 158px;
     }
   }
 }

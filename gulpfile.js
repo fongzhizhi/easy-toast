@@ -24,7 +24,7 @@ const appConfig = {
 
   // => entry
   html_paths: "public/*.html",
-  styles_paths: "src/styles/**/*.less",
+  styles_paths: ["src/styles/**/*.less"],
   scripts_paths: "src/**/*.ts",
   script_entry: ["src/app.ts", "src/Toast.ts"],
   assets_paths: "src/assets/**/*",
@@ -74,7 +74,7 @@ function styleCompiler() {
     plugins.push(cssnano());
     // 重命名
     plugins.push(rename({ suffix: ".min" }));
-    appConfig.css_path = appConfig.css_path.replace(/$\.css/, ".min.css");
+    appConfig.css_path = appConfig.css_path.replace(/\.css$/, ".min.css");
   }
   // 输出
   plugins.push(dest(appConfig.dest));
@@ -107,7 +107,7 @@ function scriptCompiler() {
     // plugins.push(minify());
     // 重命名
     plugins.push(rename({ suffix: ".min" }));
-    appConfig.js_path = appConfig.css_path.replace(/$\.js/, ".min.js");
+    appConfig.js_path = appConfig.js_path.replace(/\.js$/, ".min.js");
   }
   // 输出
   plugins.push(dest(appConfig.dest));

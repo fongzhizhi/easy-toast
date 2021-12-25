@@ -66,12 +66,16 @@ const defaultContainer = "toast-container";
 export class Toast {
   /**Toast的容器 */
   static container: string = "#" + defaultContainer;
+  /**最大可显示数量 */
+  static maxCount: number | null = null;
   /**配置信息 */
   readonly config: ToastConfig;
   /**消息面板ID */
   private panelId: string = "";
   /**回调函数 */
   private calls: Function[] = [];
+  /**定时器id */
+  private timerIntervalId: number;
 
   /**
    * 设置Toast的容器位置
@@ -79,6 +83,10 @@ export class Toast {
    */
   static setContainer(selectors: string) {
     this.container = selectors;
+  }
+
+  static setMaxCount(number?: number) {
+    this.maxCount = number || null;
   }
 
   constructor(config: Partial<ToastConfig>) {
@@ -113,9 +121,10 @@ export class Toast {
       if (typeof item === "string") {
         msgBody += `<span>${item}</span>`;
       } else {
+        item.class = item.class || "";
         if (item.call) {
           this.calls.push(item.call);
-          msgBody += `<a class="${item.class}" call-index="${
+          msgBody += `<a href="#" class="${item.class}" call-index="${
             this.calls.length - 1
           }">${item.text}</a>`;
         } else {
@@ -209,6 +218,17 @@ export class Toast {
     if (!container) {
       container = this.initContainer();
     }
+    // 关闭超出的消息
+    if (Toast.maxCount > 0) {
+      const panels = container.querySelectorAll("* > .toast-panel");
+      const needClose = panels.length - Toast.maxCount + 1;
+      for (let i = 0; i < needClose; i++) {
+        const closeBtn = panels[i].querySelector(
+          ".btns > .close"
+        ) as HTMLElement;
+        closeBtn && closeBtn.click();
+      }
+    }
     container.appendChild(fragement);
     // 入场动画
     const enterClass = "enter-in";
@@ -234,10 +254,9 @@ export class Toast {
       const timerGap = 1000;
       const leaveTimer = 300;
       this.updatePanelTimer(timer);
-      const timerIntervalId = setInterval(() => {
+      this.timerIntervalId = setInterval(() => {
         const panelTimer = this.getPanelTimer() - timerGap;
         if (panelTimer < leaveTimer) {
-          clearInterval(timerIntervalId);
           setTimeout(() => {
             this.close();
           }, Math.max(0, panelTimer - leaveTimer));
@@ -256,6 +275,7 @@ export class Toast {
     if (!panel) {
       return;
     }
+    clearInterval(this.timerIntervalId);
     this.panelId = "";
     // 离场动画
     const leaveTimer = 300;
