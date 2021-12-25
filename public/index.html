@@ -1,17 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title><%= page_title %></title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <link rel='stylesheet' type='text/css' media='screen' href='<%= css_path %>'>
-</head>
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="<%= css_path %>"
+    />
+  </head>
+  <body>
     <div id="app">
-        <img id="logo" src="<%= assets_path %>logo.png" alt="logo">
+      <h2><%= page_title %></h2>
+      <img id="logo" src="<%= assets_path %>logo.png" alt="logo" />
+      <div class="toast-message">
+        <div class="line">
+          <input
+            id="toast-msg"
+            name="msg"
+            type="text"
+            placeholder="please enter the message"
+            value="this is a message!"
+          />
+        </div>
+        <div class="line">
+          <input id="toast-timer" name="timer" type="number" value="3000" />ms
+        </div>
+        <div class="line btns">
+          <button class="btn success" action="success">Success</button>
+          <button class="btn error" action="error">Error</button>
+          <button class="btn warn" action="warn">Warn</button>
+          <button class="btn info" action="info">Info</button>
+        </div>
+      </div>
     </div>
     <script src="<%= js_path %>"></script>
-</body>
+  </body>
 </html>

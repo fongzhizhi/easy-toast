@@ -1,0 +1,110 @@
+// 面板
+#toast-container {
+  position: absolute;
+  top: 10px;
+  left: calc(50% - 299px);
+  transform: translateX(calc(299px - 50%));
+  pointer-events: none;
+  z-index: 2021;
+  // Toast消息面板
+  .toast-panel {
+    transition: opacity 0.3s, transform 0.3s ease-out, height 0.3s ease-out;
+    &.enter-in {
+      opacity: 0;
+      transform: translateY(-40px) scale(0.5);
+    }
+    &.leave-to {
+      opacity: 0;
+      transform: scale(0.5);
+      height: 0 !important;
+    }
+    .body {
+      pointer-events: all;
+      background-color: #f0f9eb;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      box-shadow: 1px 1px 2px #bfa5a5;
+      .icon {
+        font-size: 18px;
+      }
+      .msg {
+        max-width: 600px;
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0 10px;
+      }
+      .btns {
+        display: flex;
+        .timer {
+          margin-right: 10px;
+          color: #20dce5;
+        }
+        .close {
+          cursor: pointer;
+        }
+      }
+      &.success {
+        background-color: #f0f9eb;
+        color: #5aa37c;
+      }
+      &.error {
+        background-color: #ffebea;
+        color: #ec5f56;
+      }
+      &.warn {
+        background-color: #fff1e3;
+        color: #ffaa5f;
+      }
+      &.info {
+        background-color: #eef3f8;
+        color: #1790ff;
+      }
+    }
+  }
+  .hidden {
+    display: none;
+  }
+}
+
+// 图标
+@font-face {
+  font-family: "icomoon";
+  src: url("fonts/icomoon.eot?2uvdww");
+  src: url("fonts/icomoon.eot?2uvdww#iefix") format("embedded-opentype"),
+    url("fonts/icomoon.ttf?2uvdww") format("truetype"),
+    url("fonts/icomoon.woff?2uvdww") format("woff"),
+    url("fonts/icomoon.svg?2uvdww#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-toast-info:before {
+  content: "\e900";
+}
+.icon-toast-error:before {
+  content: "\e901";
+}
+.icon-toast-warn:before {
+  content: "\e902";
+}
+.icon-toast-success:before {
+  content: "\e903";
+}

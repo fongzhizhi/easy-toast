@@ -4,7 +4,7 @@
   "description": "快速启用一个相对完整的webapp，切换不同分支以选择不同的开发环境。",
   "main": "index.js",
   "scripts": {
-    "prettier": "prettier --write src/**/*.ts --write *.js",
+    "prettier": "prettier --write src/**/*.ts --write src/**/*.less --write public/*.html --write *.js",
     "build": "gulp build",
     "build:prod": "gulp buildProd",
     "server": "gulp server",

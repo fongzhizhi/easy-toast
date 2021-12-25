@@ -26,9 +26,9 @@ const appConfig = {
   html_paths: "public/*.html",
   styles_paths: "src/styles/**/*.less",
   scripts_paths: "src/**/*.ts",
-  script_entry: "src/app.ts",
+  script_entry: ["src/app.ts", "src/Toast.ts"],
   assets_paths: "src/assets/**/*",
-  publicPaths: ["public/*", "!public/*.html"],
+  publicPaths: ["public/*/**", "!public/*.html"],
 
   // => output
   /**基础路径 */
@@ -36,7 +36,7 @@ const appConfig = {
   /**输出路径 */
   dest: "dist",
   /**页面标题 */
-  page_title: "webapp-quick-start",
+  page_title: "Toast Message",
   /**打包的css路径 */
   css_path: "index.css",
   /**打包的js路径 */
